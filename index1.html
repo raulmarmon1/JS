@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+
+
+<body>
+
+    <h1>Introducción a JavaScript</h1>
+    <button onclick="suma()">Sumar</button>
+    <button onclick="login()">Login</button>
+    <button onclick="compruebaPar()">¿Es par?</button>
+    <button onclick="mayorEdad()">¿Eres mayor de edad?</button>
+    <button onclick="calculaIMC()">IMC</button>
+    <button onclick="media()">Media</button>
+    <button onclick="calculaAreaTriangulo()">Area triangulo</button>
+    
+
+    <script>
+        function suma(){
+        alert ("Bienvenidos a mi página");
+
+        let n1 = prompt ("Dime un número");
+        if (isNaN(n1)){
+        alert ("No es un número");
+        }  {
+        let n2 = prompt ("Dime otro");
+        if (isNaN(n2)){
+        alert ("No es un número");    
+        } else {
+        let suma = Number (n1) + Number (n2);
+        alert ("La suma de " + n1 + " mas " + n2 + " es: " +suma);
+        }}}
+
+
+        function login(){
+            let usuario = prompt ("Introduce usuario")
+            let contraseña = prompt ("Introduzca contraseña")
+            if ( usuario == "admin" && contraseña == "1234") {
+                alert("Bienvenidos a mi página")
+        } else {
+                alert("Acceso denegado")
+        }}
+        
+
+
+        function par(n){
+            if (n%2==0) {
+                return true;
+            } else {
+                return false;
+            }}
+
+        function compruebaPar(){
+            let numero=prompt ("Dime el número");
+            if (isNaN(numero)){
+            alert ("Te he dicho un número");
+            return; }
+        if (par(numero)){
+            alert ("Es par");
+        } else {
+            alert ("Es impar");
+        }}
+
+
+
+        function mayorEdad(){
+            let  edad = prompt ("Introduzca la edad")
+            if (edad>=18) {
+                alert ("Bienvenidos a mi página")
+        } else {
+                alert ("Eres menor")
+        }}
+
+
+
+
+        function imc(m,h){
+            indice = m/(h*h);
+            return indice;
+        }
+
+        function calculaIMC(){
+            masa=prompt ("Dime tu peso (KG)");
+            altura=prompt ("Dime tu altura (m)");
+            alert (imc (masa,altura));
+        }
+
+
+
+
+        function media(){
+            let n1=prompt ("Dime el 1º numero");
+            let n2=prompt ("Dime el 2º numero");
+            let n3=prompt ("Dime el 3º numero");
+            media = media3numeros (Number (n1), Number (n2), Number (n3));
+            alert ("La media es: " +media);
+        }
+
+        function media3numeros(num1,num2,num3) {
+            media=(num1+num2+num3)/3;
+            return media;
+        }
+
+
+
+
+        function areaTriangulo(b,h){
+            let area = ((Number (b)* Number (h)) /2);
+            return area;
+        }
+
+        function calculaAreaTriangulo(){
+            let base = prompt("Dime la base");
+            let altura = prompt("Dime tu altura");
+            let area=areaTriangulo (altura, base);
+            alert ("La base del triangulo: "+base+" y la altura: " +altura+ " el area es: " +area);
+        }
+
+
+    </script>
+    
+</body>
+</html>
