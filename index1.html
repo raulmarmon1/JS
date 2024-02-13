@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript</title>
+
+    <style>
+        #display{
+            border: 2px solid red;
+        }
+    </style>
+
 </head>
 
 
@@ -17,9 +24,18 @@
     <button onclick="calculaIMC()">IMC</button>
     <button onclick="media()">Media</button>
     <button onclick="calculaAreaTriangulo()">Area triangulo</button>
+    <button onclick="calculaPrecioConIva()">Precio con IVA</button>
     
+    <h2>Cálculo del IVA de un producto</h2>
+    Precio sin IVA <input value="100" type="number" id="precio-sin-iva">
+    Tipo <input type="number" max="3" min="1" value="3" id="tipo">
+    <button onclick="calculaPrecioConIvaFormulario()">Calculo del precio con IVA</button>
+    <p id="display">
 
+    </p>
+    
     <script>
+
         function suma(){
         alert ("Bienvenidos a mi página");
 
@@ -36,6 +52,8 @@
         }}}
 
 
+
+
         function login(){
             let usuario = prompt ("Introduce usuario")
             let contraseña = prompt ("Introduzca contraseña")
@@ -45,6 +63,8 @@
                 alert("Acceso denegado")
         }}
         
+
+
 
 
         function par(n){
@@ -108,6 +128,7 @@
 
 
 
+
         function areaTriangulo(b,h){
             let area = ((Number (b)* Number (h)) /2);
             return area;
@@ -120,6 +141,50 @@
             alert ("La base del triangulo: "+base+" y la altura: " +altura+ " el area es: " +area);
         }
 
+
+
+
+        function calculaPrecioConIvaFormulario(){
+            let precioSinIva = document.getElementById("precio-sin-iva");
+            let precioSinIvaValor = precioSinIva.value;
+            let tipoValor = document.getElementById("tipo").value;
+            let precioIva = precioConIva(precioSinIvaValor,tipoValor);
+            let display = document.getElementById("display");
+            display.innerHTML = "El precio con IVA es: " +precioIva;
+
+        }
+
+        function calculaPrecioConIva(){
+            let precio=prompt("Dime el precio sin IVA");
+            let tipo=prompt("Dime el tipo ( 1/2/3)");
+            let precioIva = precioConIva(precio,tipo);
+            alert ("Precio con IVA " +precioIva);
+            if (PuedePagarEfectivo (precioIva)) {
+                alert ("Puede pagar en efectivo");
+            } else {
+                alert ("No puede pagar en efectivo");
+            }
+        }
+
+        function precioConIva(precioSinIva,tipo){
+            if (tipo==1){
+            return precioSinIva*1.05;
+            }
+            if (tipo==2){
+            return precioSinIva*1.10;
+            }
+            if (tipo==3){
+            return precioSinIva*1.21;
+            }
+        }
+
+        function PuedePagarEfectivo(cantidad){
+            if (cantidad<2000) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 
     </script>
     
