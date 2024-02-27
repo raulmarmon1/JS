@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+
+    <style>
+        #display{
+            width: 40%;
+            border: 3px solid blue;
+            border-radius: 10px;
+            height: 100px;
+            margin: auto;
+            padding: 10px;
+            overflow: auto;
+            
+        }
+
+        #display1{
+            width: 40%;
+            border: 3px solid red;
+            border-radius: 10px;
+            height: 100px;
+            margin: auto;
+            padding: 10px;
+            overflow: auto;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <h1 id="titulo">Manejo de Arrays</h1>
+    <button onclick="diceAlineacion()">Alineacion</button>
+    <button onclick="imprimeAlineacion()">Imprime Alineacion</button>
+    <button onclick="cambiaImagen()">Imagen</button>
+    <button onclick="tabla()">Tabla de multiplicar</button>
+    <img id="imagen" src="" alt="" width="100" height="100">
+    <div id="display"></div>
+    <div id="display1"></div>
+
+    <script>
+        function cambiaImagen(){
+            let imagen = document.getElementById("imagen");
+            imagen.src = "https://ltde.es/5049-large_default/bandera-espana-real-madrid.jpg";
+        }
+
+        let alineacion=["Cristiano Ronaldo","Maradona","Zidane","Pelé","Maldini"]
+        /****************************** **********************/
+
+        function diceAlineacion(){
+        alineacion.push("Beckenbauer");  /*Se añade a la derecha*/
+        alineacion.push("Cafu");  /*Se añade a la izquierda*/
+        alineacion.unshift("Cafu");
+        alert("Hay " +alineacion.length+ " jugadores")
+        let posicion=prompt("Dime posicion");
+
+        if (posicion>=alineacion.length){
+            alert("No hay tantos jugadores");
+        }
+        else {
+            alert("En la posicion " +posicion+ " juega " +alineacion[posicion]);
+        }  
+    }
+
+    function imprimeAlineacion(){
+        let display = document.getElementById("display");
+        display.innerHTML = "<ol>"
+
+        for(let i=0;i<alineacion.length;i++){
+            display.innerHTML = display.innerHTML + "<li>" +alineacion[i]+ "</li>";
+        }
+        display.innerHTML = display.innerHTML + "</ol>";
+        display.style.backgroundColor = "yellow";
+        display.style.width = "30%";
+        document.getElementById("titulo").style.color = "red";
+        document.getElementById("titulo").style.fontSize = "4em";
+        }
+
+        function tabla(){
+        let numero = prompt("Dime un numero");
+
+        for(let i=0; i<=10; i++){
+            display1.innerHTML = display1.innerHTML + "<li>" +numero+ " x " +[i]+ "=" +numero*[i]+ "</li>";
+        }}
+
+    </script>
+</body>
+</html>
