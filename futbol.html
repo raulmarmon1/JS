@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #imagen{
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Equipos de fútbol</h1>
+    <label for="equipo">Equipo</label>
+    <select onchange="cambiaEquipo()" id="equipo">
+        <option value="ninguno">Elija equipo</option>
+        <option value="rm">Real Madrid</option>
+        <option value="rs">Real Sociedad</option>
+    </select>
+    <img src="" alt="" id="imagen" width="200" height="200">
+    <h2 id="titulo"></h2>
+    <div id="display"></div>
+
+    <script>
+        function cambiaEquipo(){
+            let equipoObj = document.getElementById("equipo");
+            let equipoValor = equipoObj.value;
+            cambiaAtributosEquipo(equipoValor);
+        }
+
+        function cambiaAtributosEquipo(equipo){
+            let imagen = document.getElementById("imagen");
+            let titulo = document.getElementById("titulo");
+            realmadrid = ["Di Stefano", "Cristiano Ronaldo", "Raúl"];
+            realsociedad = ["Oyarzabal", "David Silva", "Mikel Merino"];
+
+            if(equipo == "rm"){
+                imagen.src = "https://futboladdictsblog.files.wordpress.com/2016/05/real-madrid-hd-logo.png";
+                titulo.innerHTML ="Alineación del Real Madrid:"  +realmadrid;
+                imagen.style.display = "block"
+            }
+            if(equipo == "rs"){
+                imagen.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDKyS4ie4lbAhRs_JMEFC-z9rdgiiq3Sa-jl62sjmLrw&s";
+                titulo.innerHTML = "Alineación de la Real Sociedad: " +realsociedad;
+                imagen.style.display = "block"
+            }
+            if(equipo == "ninguno"){
+                imagen.src = "";
+                titulo.innerHTML = "";
+                imagen.style.display = "none"
+            }
+        }
+
+        function imprimeAlineacion(alineacion){
+        display = document.getElementById("display");
+        display.innerHTML="";
+        for (let i=0;i<alineacion.length;i++) {
+            display.innerHTML+=alineacion[i]+"<br>";
+        }
+        }
+    </script>
+</body>
+</html>
