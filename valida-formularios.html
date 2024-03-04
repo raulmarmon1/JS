@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valida formularios</title>
+</head>
+<body>
+    <h1>Alta cliente</h1>
+    <form action="alta-cliente.php"
+    onsubmit="return validaFormulario()">
+
+    <p>
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre"
+        placeholder="Escriba su nombre">
+    </p>
+
+    <p>
+        <label for="edad">Edad</label>
+        <input type="number" name="edad" id="edad"
+        placeholder="Escriba su edad">
+    </p>
+    
+    <p>
+        <label for="provincia">Provincia</label>
+        <select name="provincia" id="provincia">
+        <option value="elija">Elija una</option>
+        <option value="cr">Ciudad Real</option>
+        <option value="ab">Albacete</option>
+        <option value="to">Toledo</option>
+        <option value="cu">Cuenca</option>
+        <option value="gu">Guadalajara</option>
+        </select>
+    </p>
+
+    <p>
+        <label for="contraseña">Contraseña</label>
+        <input type="password" name="contraseña" id="contraseña"
+        placeholder="Escriba su contraseña"> <button onclick="muestraContrasena()">Ver</button>
+    </p>
+
+    <p>
+        <label for="contraseña1">Repetir contraseña</label>
+        <input type="password" name="contraseña1" id="contraseña1"
+        placeholder="Repita su contraseña">
+    </p>
+
+    <p>
+        <label for="acepto">He leido y acepto las condiciones</label>
+        <input checked type="checkbox" id="acepto" name="acepto">
+    </p>
+
+    <input type="submit" value="Dar de Alta">
+
+    </form>
+
+    <script>
+
+        function muestraContrasena(){
+            let contraseña = document.getElementById("contraseña");
+            contraseña.type = "text";
+        }
+        
+        function validaFormulario(){
+            let nombre = document.getElementById("nombre");
+            if (nombre.value.length <6){
+                alert("La longitud mínima del nombre es de 6 caracteres");
+                nombre.focus();
+                return false;
+            }
+
+            let edad = document.getElementById("edad");
+            if (edad.value <18){
+                alert("La edad mínima es de 18");
+                edad.focus();
+                return false;
+            }
+
+            let provincia = document.getElementById("provincia");
+            if (provincia.value == "elija"){
+                alert("Debes seleccionar una provincia");
+                provincia.focus();
+                return false;
+            }
+
+            let contraseña = document.getElementById("contraseña");
+            if (contraseña.value.length <8){
+                alert("Debes poner una contraseña más larga");
+                contraseña.focus();
+                return false;
+            }
+
+            let contraseña1 = document.getElementById("contraseña1");
+            if (contraseña.value != contraseña1.value){
+                alert("Debes poner la misma contraseña");
+                contraseña1.focus();
+                return false;
+            }
+
+            let acepto = document.getElementById("acepto");
+            if (acepto.checked == false){
+                alert("Debes leer y aceptar las condiciones");
+                acepto.focus();
+                return false;
+            }
+
+
+            alert("Datos correctos procedo a enviar");
+            return true;
+        }
+
+    </script>
+</body>
+</html>
