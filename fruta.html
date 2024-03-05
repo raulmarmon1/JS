@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Fruta</title>
+    <style>
+    #display{
+      width: 30%;
+      height: 400px;
+      padding: 10px;
+      border: 2px solid black;
+      border-radius: 10px;
+      overflow: auto;
+    }
+    </style>
 </head>
 <body>
-    
+    <p>
+        <label for="concepto">Concepto:</label>
+        <input type="text" id="concepto">
+        <label for="nombre">Importe:</label>
+        <input type="number" id="importe">
+        <button onclick="addElemento()">Añadir</button>
+        <div id="display"></div>   
+    </p>
+
+    <h1 id="total">0</h1>
+
+    <script>
+         function addElemento(){
+           let concepto = document.getElementById("concepto").value;
+           let importe = Number(document.getElementById("importe").value);
+           let display = document.getElementById("display");
+           display.innerHTML += display.innerHTML + concepto + "<br>";
+           let total = document.getElementById("total");
+           let totalNum = Number(total.innerHTML);
+           totalNum += importe;
+           total.innerHTML = totalNum;
+        }
+
+
+    </script>
+
 </body>
 </html>
+
