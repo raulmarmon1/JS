@@ -21,6 +21,16 @@
         <input type="number" name="edad" id="edad"
         placeholder="Escriba su edad">
     </p>
+
+    
+    <p>
+        <label for="pais">Pais</label>
+        <select name="pais" id="pais">
+        <option value="elija">Elija una</option>
+        <option value="es">España</option>
+        <option value="fe">Fuera de España</option>
+        </select>
+    </p>
     
     <p>
         <label for="provincia">Provincia</label>
@@ -35,6 +45,12 @@
     </p>
 
     <p>
+        <label for="usuario">Usuario</label>
+        <input type="usuario" name="usuario" id="usuario"
+        placeholder="Escriba su usuario">
+    </p>
+
+    <p>
         <label for="contraseña">Contraseña</label>
         <input type="password" name="contraseña" id="contraseña"
         placeholder="Escriba su contraseña"> <button onclick="muestraContrasena()">Ver</button>
@@ -44,6 +60,16 @@
         <label for="contraseña1">Repetir contraseña</label>
         <input type="password" name="contraseña1" id="contraseña1"
         placeholder="Repita su contraseña">
+    </p>
+
+    <p>
+        <label for="fecha">Fecha reserva (Despues de 2024-03-05)</label>
+        <input type="date" name="fecha" id="fecha">
+    </p>
+
+    <p>
+        <label for="fecha">Fecha reserva (Despues de 2024-03-05)</label>
+        <input type="date" name="fecha" id="fecha">
     </p>
 
     <p>
@@ -77,12 +103,24 @@
                 return false;
             }
 
+            let pais = document.getElementById("pais");
+            if (pais.value == "elija"){
+                alert("Debes seleccionar un pais");
+                pais.focus();
+                return false;
+            }
+
             let provincia = document.getElementById("provincia");
             if (provincia.value == "elija"){
                 alert("Debes seleccionar una provincia");
                 provincia.focus();
                 return false;
             }
+
+            let usuario = document.getElementById('usuario').value;
+            if (usuario.length < 5) {
+            alert('El usuario debe tener al menos 5 caracteres.');
+            } 
 
             let contraseña = document.getElementById("contraseña");
             if (contraseña.value.length <8){
@@ -98,7 +136,18 @@
                 return false;
             }
 
-            let acepto = document.getElementById("acepto");
+            
+            let fechaHoy = ("2024-03-05");
+            let fecha = document.getElementById("fecha").value;
+            if (fecha < fechaHoy ){
+                alert("La fecha debe ser depues de: 2024-03-05");
+                return false;
+            }
+
+           
+       
+
+        let acepto = document.getElementById("acepto");
             if (acepto.checked == false){
                 alert("Debes leer y aceptar las condiciones");
                 acepto.focus();
